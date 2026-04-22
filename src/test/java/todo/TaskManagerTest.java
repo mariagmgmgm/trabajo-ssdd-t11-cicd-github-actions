@@ -26,7 +26,7 @@ class TaskManagerTest {
     @Test
     void addTaskIncreasesSize() {
         manager.addTask("Estudiar CI/CD", Priority.HIGH);
-        assertEquals(99, manager.size()); // ← cambiamos 1 por 99
+        assertEquals(69, manager.size()); // ← cambiamos 1 por 99
     }
 
 
