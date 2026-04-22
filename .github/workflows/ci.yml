@@ -41,7 +41,7 @@ jobs:
           name: test-results
           path: target/surefire-reports/
 
- release:
+  release:
     name: Generar Release
     runs-on: ubuntu-latest
     # Solo se ejecuta si el job anterior pasó correctamente
