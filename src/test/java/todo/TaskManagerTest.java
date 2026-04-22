@@ -14,11 +14,22 @@ class TaskManagerTest {
         manager = new TaskManager();
     }
 
+
+    // TEST CORRECTO
     @Test
     void addTaskIncreasesSize() {
         manager.addTask("Estudiar CI/CD", Priority.HIGH);
         assertEquals(1, manager.size());
     }
+
+    // TEST ROTO
+    @Test
+    void addTaskIncreasesSize() {
+        manager.addTask("Estudiar CI/CD", Priority.HIGH);
+        assertEquals(99, manager.size()); // ← cambiamos 1 por 99
+    }
+
+
 
     @Test
     void addTaskWithEmptyTitleThrowsException() {
