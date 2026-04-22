@@ -1,0 +1,42 @@
+# Nombre del workflow, aparece en la pestaña Actions de GitHub
+name: CI - Todo App
+
+# Eventos que disparan el workflow
+on:
+  push:
+    branches: [ main ]        # Al hacer push a main
+  pull_request:
+    branches: [ main ]        # Al abrir un Pull Request hacia main
+
+jobs:
+  build-and-test:
+    name: Compilar y testear
+    runs-on: ubuntu-latest    # Maquina virtual Linux gratuita de GitHub
+
+    steps:
+      # Descarga el codigo del repo en la maquina virtual
+      - name: Descargar código
+        uses: actions/checkout@v4
+
+      # Instala Java 17 automaticamente en la VM
+      - name: Configurar Java 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      # Compila el proyecto con Maven
+      - name: Compilar proyecto
+        run: mvn compile
+
+      # Ejecuta los 8 tests con JUnit
+      - name: Ejecutar tests
+        run: mvn test
+
+      # Guarda el informe XML de resultados, incluso si los tests fallan
+      - name: Publicar informe de tests
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: target/surefire-reports/
