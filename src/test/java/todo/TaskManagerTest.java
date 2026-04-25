@@ -14,7 +14,7 @@ class TaskManagerTest {
         manager = new TaskManager();
     }
 
-    /*
+    
 
     // TEST CORRECTO
     @Test
@@ -23,8 +23,8 @@ class TaskManagerTest {
         assertEquals(1, manager.size());
     }
 
-    */
-   
+    
+   /*
     // TEST ROTO
     @Test
     void addTaskIncreasesSize() {
@@ -32,7 +32,7 @@ class TaskManagerTest {
         assertEquals(2, manager.size()); // ← cambiamos 1 por 2 (no hay 2 tareas, hemos añadido solo una)
     }
     
-
+    */
 
     @Test
     void addTaskWithEmptyTitleThrowsException() {
