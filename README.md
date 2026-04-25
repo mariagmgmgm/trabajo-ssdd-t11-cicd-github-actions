@@ -33,7 +33,26 @@ El workflow se dispara automáticamente en cada `push` o `pull request` a `main`
 Si algún test falla, el job de Release **no se ejecuta**.
 
 ![Pipeline CI/CD](docs/pipeline.png)
-
+```
+    push a main
+        │
+        ▼
+┌──────────────────────┐
+│  Compilar y testear  │  ← ubuntu-latest, Java 17
+│  - mvn compile       │
+│  - mvn test (8 tests)│
+│  - Subir informe XML │
+└─────────┬────────────┘
+          │
+   Si TEST OK también 
+          │
+          ▼
+┌─────────────────────┐
+│   Generar Release   │
+│  - mvn package      │
+│  - Publicar JAR     │
+└─────────────────────┘
+```
 
 ---
 
